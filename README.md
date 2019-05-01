@@ -1,9 +1,9 @@
 # App
-https://ze-tasks.herokuapp.com/
+https://ze-tasks.herokuapp.com
 
 # Best experience in Google Chrome Desktop
 
-## How to start
+## How to sta
 
 ```
 npm i
