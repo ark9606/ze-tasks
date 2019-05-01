@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn, OneToOne } from 'typeorm';
 import { Length } from 'class-validator';
 import { Todo } from './todo';
 import { User } from './user';
@@ -18,6 +18,15 @@ export class UserProgram {
     nullable: true
   })
   start: Date;
+
+  @ManyToOne(type => Program)
+  @JoinColumn()
+  program: Program;
+
+
+  @ManyToOne(type => User)
+  @JoinColumn()
+  user: User;
 
   // @ManyToOne(type => Program, program => program.users)
   // program: Program;

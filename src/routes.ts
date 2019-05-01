@@ -20,8 +20,8 @@ router.delete('/users/:id/todos/:todoId', controller.todo.deleteTodo);
 router.post('/weather', controller.weather.getWeather);
 
 // PROGRAM ROUTES
-router.get('/programs',    controller.program.getPrograms);
-// router.post('/users/:id/programs/:programId',   controller.program.addProgram);
+router.get('/users/:id/programs/',    controller.program.getPrograms);
+router.post('/users/:id/programs/:programId',   controller.program.addProgram);
 
 router.get('/categories',    controller.category.getCategories);
 
