@@ -1,0 +1,144 @@
+$padd: 10px;
+$img-size: 30vmin;
+$img-size-min: 350px;
+// $img-size: 350px;
+
+
+// $tooltip-clr: yellow;
+$tooltip-clr: rgba(235, 235, 235, 1);
+$tooltip-border: 1px solid green;
+
+$tooltip-pointer-radius: 50%;
+
+$tooltip-pointer-w: 22px;
+$tooltip-pointer-h: 22px;
+
+@mixin pointerAnimation() {
+  &:before {
+    opacity: 1;
+  }
+}
+
+@mixin verticalTooltip() {
+  min-width: 20%;
+  max-width: 50%;
+  top: 0;
+  bottom: 0;
+}
+
+@mixin horizintalTooltip() {
+  min-height: 20%;
+  max-height: 50%;
+  left: 0;
+  right: 0;
+}
+
+// list of images
+.list {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: auto;
+  
+  // flex-wrap: wrap;
+  // justify-content: space-between;
+}
+
+
+.image_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: $img-size;
+  min-height: $img-size-min;
+  background: white;
+  // background: red;
+  padding: $padd;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+
+
+  // Buttons: Top Left, Top Right, Center
+  .button {
+    position: absolute;
+    top: 0;
+    height: 20px;
+    width: 60px;
+    background: rgb(238, 238, 238);
+    border: none;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: .3s;
+
+    &[data-pos='left']{
+      left: 0;
+      border-bottom-right-radius: 8px;
+    }
+
+    &[data-pos='right']{
+      right: 0;
+      border-bottom-left-radius: 8px;
+    }
+
+    &[data-pos='center']{
+      left: calc(50% - 30px);
+      top: calc(50% - 10px);
+      border-radius: 15px;
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+
+  // Style tooltip container
+  .image_container {
+    width: 100%;
+    height: 100%;
+
+    
+    // Image itself
+    .image_inner {
+      position: absolute;
+      // width: calc(100% - #{$padd} * 2);
+      width: 100%;
+      // height: calc(100% - #{$padd} * 2);
+      height: 100%;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      transition: .3s;
+      opacity: 0.9;
+    }
+  }
+
+
+
+  &:hover .image_inner {
+    opacity: 1;
+  }
+
+}
+
+@media only screen and (max-width: 1024px) {
+  $img-size: 40vmin;
+  .list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .image_wrapper {
+    height: $img-size;
+  }
+
+} 
+
+@media only screen and (max-width: 600px) {
+
+  .list {
+    grid-template-columns: 1fr;
+  }
+
+} 

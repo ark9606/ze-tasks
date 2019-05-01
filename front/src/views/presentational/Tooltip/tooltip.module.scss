@@ -1,0 +1,173 @@
+$padd: 10px;
+
+$tooltip-clr: rgba(235, 235, 235, 1);
+$tooltip-border: 1px solid green;
+
+$tooltip-pointer-radius: 50%;
+
+$tooltip-pointer-s: 22px;
+$tooltip-pointer-w: $tooltip-pointer-s;
+$tooltip-pointer-h: $tooltip-pointer-s;
+
+@mixin pointerAnimation() {
+  &:before {
+    opacity: 1;
+  }
+}
+
+@mixin verticalTooltip() {
+  min-width: 20%;
+  max-width: 50%;
+  top: 0;
+  bottom: 0;
+}
+
+@mixin horizintalTooltip() {
+  min-height: 20%;
+  max-height: 50%;
+  left: 0;
+  right: 0;
+}
+
+
+// @function getPointerPosition($val) {
+//   $newPos: calc(#{$val} - #{$tooltip-pointer-s} / 2);
+//   @return $newPos;
+// }
+
+@function getPointerPosition($val) {
+  @return calc(#{$val} - #{$tooltip-pointer-s} / 2);
+}
+
+// Image container
+.container {
+  position: relative;
+  overflow: hidden;
+
+  // Tooltip
+  .image_tooltip {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: $tooltip-clr;
+    padding: 10px;
+    box-sizing: border-box;
+    transition: .3s;
+    cursor: default;
+    
+    // word-wrap: break-all;
+    word-break: break-all;
+
+    // Tooltip pointer
+    &:before {
+      display: block;
+      content: '';
+      position: absolute;
+      background: $tooltip-clr;
+      width: $tooltip-pointer-w;
+      height: $tooltip-pointer-h;
+      transition: .35s;
+      box-sizing: border-box;
+      border: $tooltip-border;
+
+      // top: var(attr(data-position));
+      // top: content;
+      // top: calc(attr(data-position) * 1%);
+      // top: calc(10 * 1%);
+      // margin-top: calc(attr(data-position) * 1%);
+      // margin-top: 100px;
+
+
+
+    }
+
+
+
+    &.tooltip_right {
+      @include verticalTooltip();
+      right: 0;
+      transform: translateX(100%);
+      border-left: $tooltip-border;
+
+      &::before{
+        left: 0;
+        top: getPointerPosition(var(--tooltip-position));
+        transform: translateX(-100%);
+        border-bottom-left-radius: $tooltip-pointer-radius;
+        border-top-left-radius: $tooltip-pointer-radius;
+        border-right-color: transparent;
+      }
+      &:hover {
+        transform: translateX(0);
+        @include pointerAnimation();
+      }
+    }
+
+
+    &.tooltip_left{
+      @include verticalTooltip();
+      left: 0;
+      transform: translateX(-100%);
+      border-right: $tooltip-border;
+
+      &::before{
+        right: 0;
+        top: getPointerPosition(var(--tooltip-position));
+        transform: translateX(100%);
+        border-bottom-right-radius: $tooltip-pointer-radius;
+        border-top-right-radius: $tooltip-pointer-radius;
+        border-left-color: transparent;
+      }
+
+      &:hover {
+        transform: translateX(0);
+        @include pointerAnimation();
+      }
+    }
+
+    &.tooltip_top{
+      @include horizintalTooltip();
+      top: 0;
+      transform: translateY(-100%);
+      border-bottom: $tooltip-border;
+
+      &::before{
+        bottom: 0;
+        left: getPointerPosition(var(--tooltip-position));
+        transform: translateY(100%);
+        border-bottom-right-radius: $tooltip-pointer-radius;
+        border-bottom-left-radius: $tooltip-pointer-radius;
+        border-top-color: transparent;
+      }
+
+      &:hover {
+        transform: translateY(0);
+        @include pointerAnimation();
+      }
+    }
+
+    &.tooltip_bottom {
+      @include horizintalTooltip();
+      bottom: 0;
+      transform: translateY(100%);
+      border-top: $tooltip-border;
+
+      &::before{
+        top: 0;
+        
+        left: getPointerPosition(var(--tooltip-position));
+        transform: translateY(-100%);
+        border-top-right-radius: $tooltip-pointer-radius;
+        border-top-left-radius: $tooltip-pointer-radius;
+        border-bottom-color: transparent;
+      }
+      &:hover {
+        transform: translateY(0);
+        @include pointerAnimation();
+      }
+    }
+  }
+}
+
+

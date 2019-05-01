@@ -1,0 +1,174 @@
+$img-size: 300px;
+
+@mixin flexible () {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image_form {
+  margin: 0 auto;
+  width: 50vmin;
+
+  & > p {
+    margin: 0 10px;
+    font-size: 0.85em;
+  }
+  
+  & > div {
+    min-width: 350px;
+    min-height: 450px;
+    width: 40vmin;
+    height: 40vmin;
+  }
+
+  // background: rgb(199, 199, 199);
+  box-sizing: border-box;
+  padding: 10px 0;
+  
+
+  // font-size: calc(1em + .5vmin);
+
+}
+
+.settings {
+  display: flex;
+  flex-direction: column;
+}
+
+.trackbar {
+  margin: 0 auto;
+  width: calc(100% - 20px);
+}
+
+span.text_button {
+  // color: rgb(0, 184, 0);
+  color: rgb(0, 153, 255);
+  cursor: pointer;
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: underline;
+    color: red;
+
+  }
+}
+button.button {
+  // height: 5vmin;
+  width: 100%;
+  margin: 5px;
+  height: 30px;
+  border: none;
+  // padding: 0 5px;
+  border-radius: 5px;
+  border-radius: 1px;
+  background-color: rgb(233, 233, 233);
+  cursor: pointer;
+  color: darkgreen;
+  transition: .2s;
+  &:hover {
+    background-color: rgb(243, 243, 243);
+  }
+
+  &.button_selected {
+    background-color: green;
+    color: rgb(207, 207, 207);
+  }
+}
+
+
+// Customize tooltip container
+.image_container {
+  margin: 10px;
+
+}
+.input_image {
+  // margin: 0 auto;
+  // margin: 10px;
+  position: relative;
+  background-color: rgba(188, 143, 143, 0.7);
+  background-color: rgba(121, 121, 121, 0.7);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: calc(100%);
+  height: $img-size;
+  cursor: pointer;
+  // transition: .3s;
+  @include flexible();
+
+  &.input_image_empty::after {
+    content: 'choose image';
+  }
+
+  &::after {
+    padding: 2px 10px;
+    border-radius: 15px;
+    content: 'change image';
+    opacity: 0.8;
+    transition: .3s;
+    background: white;
+    font-size: 1em;
+  }
+
+  &:hover {
+    &::after {
+      opacity: 1;
+      color: rgb(201, 39, 39);
+
+    }
+
+  }
+
+}
+
+.pointers {
+  display: flex;
+  justify-content: space-between;
+  width: calc(100% - 10px);
+  margin: 5px;
+
+  // background: blue;
+}
+
+.footer {
+  display: grid;
+  grid-template-columns: 75% calc(25% - 10px);
+  // justify-content: space-between;
+  // width: 100%;
+  width: calc(100% - 10px);
+
+  margin: 5px;
+
+  // background: red;
+}
+
+input[type='text'] {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid black;
+  margin: 5px;
+  outline: none;
+  box-sizing: border-box;
+  padding: 0 10px;
+}
+
+
+@media only screen and (max-width: 600px) {
+
+  .image_form, .image_form>div {
+    width: 100%;
+    min-width: 100%;
+
+  }
+
+  .pointers {
+    button {
+      width: calc(25% - 10px);
+      padding: 0;
+      margin: 0 5px;
+    }
+  }
+
+} 
+

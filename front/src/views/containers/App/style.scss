@@ -1,0 +1,36 @@
+.App {
+  margin: 0 auto;
+  height: 100vh;
+  
+  max-width: 900px;
+  width: calc(100% - 20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // background: green;
+
+ 
+
+}
+
+
+
+
+// @media only screen and (max-width: 992px) {
+
+//   .App {
+//     width: 100%;
+//     min-width: 100%;
+
+//   }
+
+// } 
+
+// @keyframes App-logo-spin {
+//   from {
+//     transform: rotate(0deg);
+//   }
+//   to {
+//     transform: rotate(360deg);
+//   }
+// }

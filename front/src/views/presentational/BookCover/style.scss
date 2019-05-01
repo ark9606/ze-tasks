@@ -1,0 +1,131 @@
+
+$blue: hsla(221, 44, 42, 1);
+
+.book_cover {
+  position: relative;
+  height: 90%;
+  width: 100%;
+  background: $blue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+
+  color: white;
+
+  .row.user {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    span.title {
+      // display: block;
+      // padding: 20px 0;
+      margin-bottom: 5px;
+    }
+
+    span.name {
+      height: 40px;
+      min-width: 200px;
+
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+
+      font-size: 1.3em;
+      border-bottom: 1px solid white;
+    }
+
+  }
+
+  .row.login {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+
+
+    .fb_btn_container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+      background: $blue;
+      border-radius: 25px;
+      border: 2px solid white;
+      overflow: hidden;
+      padding: 0 30px;
+      cursor: pointer;
+
+      transition: .3s;
+
+      &:hover {
+        background: hsla(221, 44, 46, 1);
+      }
+
+      svg {
+        height: 25px;
+        width: 25px;
+        path {
+          fill: white;
+        }
+      }
+
+      .fb_btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 40px;  
+        border: none;
+        
+        background: transparent;
+        color: white;
+        transition: .3s; 
+        font-size: 1.2em;
+        font-family: Arial, Helvetica, sans-serif;
+        cursor: pointer;
+        outline: none;
+      }
+    }
+
+
+  }
+
+  // Line
+
+  &::after {
+    position: absolute;
+    width: 20px;
+    right: 50px;
+    content: '';
+    height: 100%;
+    background: rgb(209, 209, 0);
+
+  }
+
+
+}
+
+
+
+
+
+
+// @media only screen and (max-width: 992px) {
+
+//   .App {
+//     width: 100%;
+//     min-width: 100%;
+
+//   }
+
+// } 
+
+// @keyframes App-logo-spin {
+//   from {
+//     transform: rotate(0deg);
+//   }
+//   to {
+//     transform: rotate(360deg);
+//   }
+// }

@@ -1,0 +1,163 @@
+
+$addBtn_clr: rgb(190, 190, 190);
+$addBtn_clr_hover: rgb(0, 173, 0);
+// $addBtn_clr_hover: yellow;
+
+form.add_todo {
+  position: relative;
+  margin: 0 auto;
+  max-width: 500px;
+  width: 100%;
+  // background: white;
+
+
+
+  details {
+    summary {
+      outline: none;  
+    }
+
+    summary::-webkit-details-marker {
+      /* ... */
+      display: block;
+      position: absolute;
+      left: -20px;
+      color: rgba(0, 78, 0, 0.5);
+      margin-top: 15px;
+      cursor: pointer;
+      &:hover {
+        color: rgba(0, 78, 0, 0.8);
+
+      }
+    }
+  }
+
+  .row {
+    display: flex;
+    align-items: center;
+    // justify-content: center;
+  }
+
+  .row.drop_inputs {
+    justify-content: space-between;
+    // justify-content: center;
+    width: calc(100% - 50px);
+
+  }
+
+  .input_txt {
+    width: calc(100% - 50px);
+    height: 40px;
+    margin-bottom: 10px;    
+    resize: none;
+    box-sizing: border-box;
+    padding: 10px;
+
+    background: white;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 0.05em;
+  }
+
+  textarea.input_txt {
+    height: 100px;
+  }
+
+  .control {
+    border: none;
+    border-radius: 15px;
+    outline: none;
+
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+
+    &:hover {
+      box-shadow: 0 3px 7px rgba(0,0,0,0.2), 0 4px 4px rgba(0,0,0,0.2);
+    }
+  }
+
+  /* select option, datetime */
+  .drop_input {
+    // width: 40%;
+    min-width: 130px;
+    width: 15vw;
+    // margin: 0 auto;
+    height: 30px;
+    border: none;
+    border-radius: 15px;
+    outline: none;
+    padding: 0 5px;
+    cursor: default;
+  }
+
+  .fade {
+    opacity: .5;
+    &:hover {
+      opacity: 1;
+    }    
+  }
+
+
+  .button {
+    width: 50px;
+    height: 40px;
+    margin-bottom: 10px;   
+    // margin-left: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    outline: none;
+    background: transparent;
+    // background: blue;
+    cursor: pointer;
+    
+    svg {
+      width: 30px;
+      height: 30px;
+
+      path {
+        fill: $addBtn_clr;
+        transition: .3s;
+
+      }
+    }
+
+    &:hover svg path {
+      fill: $addBtn_clr_hover;
+    }
+  }
+}
+
+
+
+
+
+@media only screen and (max-width: 600px) {
+
+  form.add_todo { 
+
+
+    .row.drop_inputs {
+
+      width: calc(100% );
+  
+    }
+  
+    .input_txt {
+      width: calc(100%);
+
+    }
+  }
+
+} 
+
+// @keyframes App-logo-spin {
+//   from {
+//     transform: rotate(0deg);
+//   }
+//   to {
+//     transform: rotate(360deg);
+//   }
+// }
