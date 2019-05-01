@@ -1,5 +1,5 @@
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany, ManyToMany, JoinTable } from 'typeorm';
-import { Length, IsEmail } from 'class-validator';
+import { Length, IsEmail, IsOptional } from 'class-validator';
 import { Todo } from './todo';
 import { Program } from './program';
 import { UserProgram } from './userProgram';
@@ -17,10 +17,12 @@ export class User {
 
     @Column({
         length: 100,
-        unique: true
+        unique: true,
+        nullable: true,
     })
     @Length(4, 100)
     @IsEmail()
+    @IsOptional()
     email: string;
 
     @Column({
