@@ -27,6 +27,16 @@ const connectionOptions = PostgressConnectionStringParser.parse(config.databaseU
 // create connection with database
 // note that its not active database connection
 // TypeORM creates you connection pull to uses connections from pull on your requests
+
+const entities = [];
+
+if(process.env.NODE_ENV === 'development') {
+    entities.push('src/entity/**/*.ts');
+}
+else {
+    entities.push('dist/entity/**/*.js');
+
+}
 createConnection({
     type: 'postgres',
     host: connectionOptions.host,
@@ -36,10 +46,7 @@ createConnection({
     database: connectionOptions.database,
     synchronize: true,
     logging: false,
-    entities: [
-       'dist/entity/**/*.js',
-       'src/entity/**/*.ts'
-    ],
+    entities,
     extra: {
         ssl: config.dbsslconn, // if not development, will use SSL
     }
