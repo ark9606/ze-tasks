@@ -45,21 +45,25 @@ export default class UserController {
 
             const dt = new Date();
 
-            const h = dt.getHours();
-            const m = dt.getMinutes();
-
-            const newTodo = new Todo();
-            newTodo.name = 'Register on the best site for planning your life';
-            newTodo.date = dt;
-            // newTodo.time = `${h}:${m}:00`;
-            newTodo.time = dt;
-            newTodo.user = user;
-            newTodo.done = true;
-
             const newTodo1 = new Todo();
             newTodo1.name = 'Make your first TODO';
             newTodo1.date = dt;
             newTodo1.user = user;
+
+
+
+
+            const newTodo = new Todo();
+            newTodo.name = 'Register on the best site for planning your life';
+            newTodo.date = dt;
+
+            dt.setHours(dt.getHours() + 3);
+            
+            newTodo.time = dt;
+            newTodo.user = user;
+            newTodo.done = true;
+
+
 
             await todoRepository.save(newTodo);
             await todoRepository.save(newTodo1);
